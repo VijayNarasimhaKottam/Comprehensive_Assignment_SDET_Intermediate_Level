@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "516a2e44-6d09-4930-9a94-41eeca312526",
+		"name": "API Test Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27152725",
+		"_collection_link": "https://blue-eclipse-9900.postman.co/workspace/MyWorkspace~b479b4af-c5a9-410a-8bf1-747c2e47f164/collection/27152725-516a2e44-6d09-4930-9a94-41eeca312526?action=share&source=collection_link&creator=27152725"
+	},
+	"item": [
+		{
+			"name": "Login API",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Positive Test Case\r",
+							"pm.test(\"Positive Test - HTTP Status Code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"token\");\r",
+							"});\r",
+							"\r",
+							"// Negative Test Case\r",
+							"pm.test(\"Negative Test - HTTP Status Code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"error\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"pistol\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/login",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
